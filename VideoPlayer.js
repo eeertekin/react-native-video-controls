@@ -308,11 +308,21 @@ export default class VideoPlayer extends Component {
    */
   hideControlAnimation() {
     Animated.parallel([
-      Animated.timing(this.animations.topControl.opacity, { toValue: 0 }),
-      Animated.timing(this.animations.topControl.marginTop, { toValue: -100 }),
-      Animated.timing(this.animations.bottomControl.opacity, { toValue: 0 }),
+      Animated.timing(this.animations.topControl.opacity, {
+        toValue: 0,
+        useNativeDriver: false,
+      }),
+      Animated.timing(this.animations.topControl.marginTop, {
+        toValue: -100,
+        useNativeDriver: false,
+      }),
+      Animated.timing(this.animations.bottomControl.opacity, {
+        toValue: 0,
+        useNativeDriver: false,
+      }),
       Animated.timing(this.animations.bottomControl.marginBottom, {
         toValue: -100,
+        useNativeDriver: false,
       }),
     ]).start();
   }
@@ -324,11 +334,21 @@ export default class VideoPlayer extends Component {
    */
   showControlAnimation() {
     Animated.parallel([
-      Animated.timing(this.animations.topControl.opacity, { toValue: 1 }),
-      Animated.timing(this.animations.topControl.marginTop, { toValue: 0 }),
-      Animated.timing(this.animations.bottomControl.opacity, { toValue: 1 }),
+      Animated.timing(this.animations.topControl.opacity, {
+        toValue: 1,
+        useNativeDriver: false,
+      }),
+      Animated.timing(this.animations.topControl.marginTop, {
+        toValue: 0,
+        useNativeDriver: false,
+      }),
+      Animated.timing(this.animations.bottomControl.opacity, {
+        toValue: 1,
+        useNativeDriver: false,
+      }),
       Animated.timing(this.animations.bottomControl.marginBottom, {
         toValue: 0,
+        useNativeDriver: false,
       }),
     ]).start();
   }
@@ -343,11 +363,13 @@ export default class VideoPlayer extends Component {
           toValue: this.animations.loader.MAX_VALUE,
           duration: 1500,
           easing: Easing.linear,
+          useNativeDriver: false,
         }),
         Animated.timing(this.animations.loader.rotate, {
           toValue: 0,
           duration: 0,
           easing: Easing.linear,
+          useNativeDriver: false,
         }),
       ]).start(this.loadAnimation.bind(this));
     }
